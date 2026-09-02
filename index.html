@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBKINGDOM STORY</title>
+    
+    <!-- Google Fontsの読み込み（明朝体と丸ゴシック） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- アイコンの読み込み -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSSファイルの読み込み -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-logo">FBKINGDOM <span>STORY</span></div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#about">王国案内</a></li>
+                <li><a href="#profile">国王とは</a></li>
+                <li><a href="#history">年表</a></li>
+                <li><a href="#upcoming">最新情報</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <!-- 
+          ★背景画像を設定する場合はCSSの .hero-section を編集するか、
+          ここに <img> タグを配置します。
+        -->
+        <div class="hero-frame">
+            <p class="hero-subtitle">WELCOME TO</p>
+            <h1 class="hero-title">FBKINGDOM</h1>
+            <p class="hero-description">
+                白上フブキが国王として治める、笑顔と物語が満ちる架空の王国。<br>
+                すこん部の皆様とともに歩む、王国の案内ページへようこそ。
+            </p>
+        </div>
+    </section>
+
+    <section id="about" class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">FBKINGDOMとは？</h2>
+        </div>
+        <div class="about-card">
+            <h3>笑顔と絆で結ばれた架空の王国</h3>
+            <!-- ★テキストの書き換えはここで行います -->
+            <p>
+                「FBKINGDOM（フブキングダム）」は、白上フブキが国王として建国した笑顔あふれる架空の王国です。<br>
+                国民である「すこん部」の皆様とともに、歌やライブ、様々な配信活動を通じて、<br>
+                かけがえのない楽しい思い出とストーリーを創り続けています。
+            </p>
+        </div>
+    </section>
+
+    <section id="profile" class="section-container bg-navy">
+        <div class="section-header dark-mode">
+            <h2 class="section-title">国王とは何者？</h2>
+        </div>
+        <div class="profile-grid">
+            <div class="profile-image-container">
+                <!-- ★人物画像の差し替え：srcの中身を変更してください -->
+                <img src="images/Shirakami-Fubuki.png" alt="白上フブキ 国王">
+            </div>
+            <div class="profile-details">
+                <h3 class="profile-name">白上フブキ</h3>
+                <ul class="profile-list">
+                    <!-- ★プロフィールの項目を増減する場合は <li>〜</li> をコピペしてください -->
+                    <li><strong>誕生日：</strong> 10月5日</li>
+                    <li><strong>初配信日：</strong> 2018年6月1日</li>
+                    <li><strong>身長：</strong> 155cm</li>
+                    <li><strong>所属：</strong> ホロライブ1期生/ゲーマーズ</li>
+                    <li><strong>推しマーク：</strong> 🌽</li>
+                    <li><strong>ファンネーム：</strong> すこん部</li>
+                    <li><strong>配信タグ：</strong> #フブキch</li>
+                    <li><strong>アートタグ：</strong> #絵フブキ</li>
+                </ul>
+                <div class="profile-favorites">
+                    <p><strong>【夢】</strong> みんなで沢山ライブ！すこん部のみんなと楽しいことを沢山する！</p>
+                    <p><strong>【好きなもの】</strong> お茶（特に緑茶）、紅茶、オレンジジュース / グミ、ジャーキー</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="transition-banner">
+        <p>〜 国王とすこん部が歩んできた、これまでの軌跡と未来 〜</p>
+    </div>
+
+<!-- =========================================================
+     ③ フブキングダム年表（タイムライン）
+     ========================================================= -->
+<section id="history" class="section-container">
+    <div class="section-header">
+        <h2 class="section-title">フブキングダム年表</h2>
+        <p class="section-lead">建国からこれまでの歴史と重要な出来事</p>
+    </div>
+
+    <div class="timeline">
+        <!-- 2024年10月5日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/FBKINGDOM.png" alt="FBKINGDOM建国" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2024年10月5日】</div>
+                    <div class="timeline-title">FBKINGDOM建国</div>
+                    <div class="timeline-text">1st ALBUM『FBKINGDOM “Blessing”』発売決定</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2024年11月5日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/ANTHEM1.png" alt="重大告知配信" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2024年11月5日】</div>
+                    <div class="timeline-title">重大告知配信</div>
+                    <div class="timeline-text">1stソロライブ FBKINGDOM “ANTHEM” 開催決定</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2025年1月15日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/Blessing.png" alt="1st ALBUM 発売" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2025年1月15日】</div>
+                    <div class="timeline-title">1st ALBUM 発売</div>
+                    <div class="timeline-text">1st ALBUM『FBKINGDOM “Blessing”』発売</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2025年2月13日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/ANTHEM.png" alt="1stソロライブ開催" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2025年2月13日】</div>
+                    <div class="timeline-title">1stソロライブ開催</div>
+                    <div class="timeline-text">1stソロライブ『FBKINGDOM “ANTHEM”』開催</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2025年10月5日〜6日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/冥ハロ.png" alt="生誕3DLIVE" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2025年10月5日〜6日】</div>
+                    <div class="timeline-title">生誕3DLIVE & 小説執筆</div>
+                    <div class="timeline-text">
+                        ・10月5日：生誕3DLIVE『冥界Halloween Night!』開催<br>
+                        ・10月6日：小説「FBKINGDOM STORY」執筆
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2026年6月30日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/Story.png" alt="活動8周年記念祭" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2026年6月30日】</div>
+                    <div class="timeline-title">活動8周年記念祭</div>
+                    <div class="timeline-text">FBKINGDOM STORY アニメーショントレーラー公開</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2026年8月5日 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <img src="images/みろく.png" alt="みろくの里" class="timeline-card-img">
+                <div class="timeline-card-body">
+                    <div class="timeline-date">【2026年8月5日】</div>
+                    <div class="timeline-title">フブキングダム領地拡大</div>
+                    <div class="timeline-text">
+                        みろくの里×フブキングダムのコラボ<br>
+                        フブキングダムの里爆誕!!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最後の線の先に配置されるComing Soon -->
+        <div class="timeline-coming-soon">Coming Soon</div>
+    </div>
+</section>
+
+    <section id="upcoming" class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">現在展開されてるあれこれ</h2>
+        </div>
+
+        <div class="upcoming-grid">
+            <!-- カード 1 -->
+            <div class="upcoming-card">
+                <i class="fa-solid fa-book icon-gold"></i>
+                <h4>小説 FBKINGDOM STORY</h4>
+                <p>王国の歴史とドラマを描くファンタジー小説企画。</p>
+            </div>
+
+            <!-- カード 2 -->
+            <div class="upcoming-card">
+                <i class="fa-solid fa-film icon-gold"></i>
+                <h4>アニメーショントレーラー</h4>
+                <p>8周年を記念した映像プロジェクト。</p>
+            </div>
+
+            <!-- カード 3 -->
+            <div class="upcoming-card border-dashed">
+                <i class="fa-solid fa-crown icon-gold"></i>
+                <h4>Coming Soon...</h4>
+                <p>新たな王国の企画が準備中です。お楽しみに！</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; FBKINGDOM STORY Project.</p>
+    </footer>
+
+    <!-- JavaScriptファイルの読み込み -->
+    <script src="script.js"></script>
+</body>
+</html>
