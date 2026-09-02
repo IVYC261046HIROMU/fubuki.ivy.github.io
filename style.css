@@ -1,0 +1,962 @@
+@charset "UTF-8";
+
+/* =========================================================
+   【CSS設定】デザイン・色・サイズの管理エリア
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. 画像サイズ・色の一括管理（変数設定）
+   --------------------------------------------------------- */
+:root {
+    /* 【カラー設定：ジャケット画像から抽出】 */
+    --color-navy: #1f2845;        /* 深みのあるクラシックネイビー */
+    --color-navy-dark: #12182b;   /* さらに暗いネイビー（背景用） */
+    --color-gold: #c9a86a;        /* 落ち着いたアンティークゴールド */
+    --color-gold-light: #e6ce98;  /* 明るめのゴールド（ハイライト） */
+    --bg-base: #fcfaf6;           /* 温かみのあるオフホワイト（背景） */
+    --bg-card: #ffffff;           /* カードの背景（純白） */
+    --text-main: #333333;         /* 基本の文字色（濃いグレー） */
+    --text-light: #fcfaf6;        /* 暗い背景に乗せる文字色 */
+
+    /* 【ゴールドグラデーション】 */
+    --gold-gradient: linear-gradient(135deg, #c9a86a 0%, #e6ce98 50%, #b38b4d 100%);
+    --gold-border: 1px solid rgba(201, 168, 106, 0.4);
+
+    /* 【フォント設定】 */
+    --font-heading: 'Shippori Mincho', serif;   /* 荘厳・格調高い明朝体 */
+    --font-body: 'Zen Maru Gothic', sans-serif; /* 読みやすく優しい丸ゴシック */
+
+    /* 【画像サイズ調整用変数】 */
+    --img-profile-width: 500px;   /* プロフィール画像の横幅 */
+}
+
+/* ---------------------------------------------------------
+   2. 全体基本リセット・スタイル＆全体背景画像設定
+   --------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* スムーススクロール */
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+/* 【背景画像コード】：サイト全体にうっすらと背景画像を配置する設定 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('input_file_2.png'); /* 全体背景画像 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15; /* 背景画像の透明度 */
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 共通：見出しは明朝体 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   3. ヘッダー（ナビゲーション）
+   --------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(18, 24, 43, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--color-gold);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.header-logo {
+    color: var(--color-gold-light);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.header-logo span {
+    color: var(--text-light);
+    font-size: 1.2rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-menu a:hover {
+    color: var(--color-gold-light);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--gold-gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* ---------------------------------------------------------
+   4. メインビジュアル（ヒーローセクション）
+   --------------------------------------------------------- */
+.hero-section {
+    min-height: 100vh;
+    background-color: var(--color-navy-dark);
+    background-image: linear-gradient(rgba(18, 24, 43, 0.65), rgba(18, 24, 43, 0.85)), url('images/ANTHEM2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+    border-bottom: 4px solid var(--color-gold);
+    position: relative;
+}
+
+.hero-frame {
+    border: 2px solid var(--color-gold);
+    padding: 50px 40px;
+    background-color: rgba(31, 40, 69, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(201, 168, 106, 0.2);
+    max-width: 800px;
+    width: 90%;
+    backdrop-filter: blur(4px);
+}
+
+.hero-subtitle {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.hero-title {
+    color: var(--text-light);
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 35px;
+}
+
+.btn-gold {
+    display: inline-block;
+    background: var(--gold-gradient);
+    color: var(--color-navy-dark);
+    padding: 12px 36px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(201, 168, 106, 0.3);
+    font-family: var(--font-body);
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(201, 168, 106, 0.5);
+}
+
+/* ---------------------------------------------------------
+   5. 共通セクションスタイル
+   --------------------------------------------------------- */
+.section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    color: var(--color-navy);
+    font-size: 2.3rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gold-gradient);
+    border-radius: 2px;
+}
+
+.section-lead {
+    margin-top: 15px;
+    color: var(--text-main);
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+.dark-mode .section-title {
+    color: var(--color-gold-light);
+}
+
+/* ---------------------------------------------------------
+   6. 個別セクション：王国案内
+   --------------------------------------------------------- */
+#about {
+    max-width: 100%; /* 左右の余白をなくし画面全幅に広げる */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.60)), url('images/FBKINGDOM.png'); /* 白いオーバーレイで画像を明るく表現 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 見出しの文字色は元の濃いネイビーを指定 */
+#about .section-title {
+    color: var(--color-navy);
+}
+
+.about-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+
+    /* --- 説明文の拡大指定 --- */
+    font-size: 1.25rem;  /* 文字の大きさを拡大（基本サイズから約1.25倍） */
+    line-height: 1.9;    /* 行間を広げて可読性を確保 */
+    font-weight: 500;    /* 文字の太さを少ししっかり表現 */
+
+    /* 四方の境界線をグラデーションで自然に溶け込ませる設定 */
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 85%);
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 85%);
+}
+
+/* ---------------------------------------------------------
+   7. 個別セクション：プロフィール
+   --------------------------------------------------------- */
+.bg-navy {
+    background-color: var(--color-navy);
+    color: var(--text-light);
+    max-width: 100%;
+}
+
+.profile-grid {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-image-container {
+    width: var(--img-profile-width);
+    flex-shrink: 0;
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--color-gold);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.profile-details {
+    flex-grow: 1;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    color: var(--color-gold-light);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(201, 168, 106, 0.3);
+    padding-bottom: 10px;
+}
+
+.profile-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.profile-list strong {
+    color: var(--color-gold);
+}
+
+.profile-favorites {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--color-gold);
+}
+
+.profile-favorites p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+} 
+.profile-favorites p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   8. クッションバナー
+   --------------------------------------------------------- */
+.transition-banner {
+    background: var(--gold-gradient);
+    color: var(--color-navy-dark);
+    text-align: center;
+    padding: 50px 20px;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ---------------------------------------------------------
+   9. 個別セクション：年表（タイムライン）
+   --------------------------------------------------------- */
+.timeline {
+    position: relative;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 35px;
+    left: 50%;
+    width: 2px;
+    background: var(--gold-gradient);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: 50%;
+    padding: 0 25px;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    background: var(--color-gold);
+    border: 3px solid var(--color-navy);
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -8px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -8px;
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 20px;
+    border-radius: 16px;
+    border: var(--gold-border);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+}
+
+.timeline-card-img {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.timeline-card-body {
+    text-align: right;
+}
+
+.timeline-date {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-navy);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.timeline-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.timeline-text {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+}
+
+.timeline-coming-soon {
+    text-align: center;
+    padding-top: 15px;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---------------------------------------------------------
+9. カルーセル (現在展開されてるあれこれ)
+--------------------------------------------------------- */
+.upcoming-carousel-wrapper {
+  position: relative;
+  max-width: 1080px;
+  margin: 30px auto 20px;
+  padding: 0 60px; /* 矢印ボタン用の左右スペース */
+}
+
+/* 矢印ボタンの絶対配置＆美しい装飾 */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-arrow.prev-btn {
+  left: 0;
+}
+
+.carousel-arrow.next-btn {
+  right: 0;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  box-shadow: 0 0 18px rgba(201, 168, 106, 0.6);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(201, 168, 106, 0.3);
+  box-shadow: none;
+}
+
+/* スライドウィンドウ */
+.upcoming-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+  padding: 10px 0;
+}
+
+.upcoming-carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  gap: 20px;
+}
+
+.upcoming-slide {
+  flex: 0 0 calc(50% - 10px);
+  box-sizing: border-box;
+}
+
+.upcoming-banner-card {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid var(--color-gold);
+  box-shadow: 0 8px 24px rgba(12, 25, 44, 0.12);
+  text-decoration: none;
+  background-color: var(--color-navy);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.upcoming-banner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(201, 168, 106, 0.3);
+  border-color: var(--color-gold-light);
+}
+
+.upcoming-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.upcoming-banner-card:hover .upcoming-banner-img {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
+
+.upcoming-banner-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(12, 25, 44, 0.4) 0%, transparent 40%, rgba(12, 25, 44, 0.6) 100%);
+}
+
+.upcoming-badge {
+  align-self: flex-start;
+  background: rgba(12, 25, 44, 0.85);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+}
+
+.upcoming-action-text {
+  align-self: flex-end;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.upcoming-banner-card:hover .upcoming-action-text {
+  transform: translateY(-2px);
+  background: var(--color-white);
+}
+
+.upcoming-banner-comingsoon {
+  border-style: dashed;
+  border-color: rgba(201, 168, 106, 0.5);
+  background: rgba(12, 25, 44, 0.05);
+}
+
+.comingsoon-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.comingsoon-placeholder i {
+  font-size: 2.5rem;
+  color: var(--color-gold);
+}
+
+/* カルーセルドットインジケーター */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(201, 168, 106, 0.3);
+  border: 1px solid var(--color-gold);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: var(--color-gold);
+  width: 28px;
+  border-radius: 10px;
+}
+
+/* ---------------------------------------------------------
+10. モーダルダイアログ (完全に非表示制御)
+--------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 25, 44, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-container {
+  background: var(--color-white);
+  width: 100%;
+  max-width: 550px;
+  border-radius: 16px;
+  padding: 35px 30px 30px;
+  position: relative;
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  background: var(--color-navy);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.modal-date {
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-navy);
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.modal-img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(201, 168, 106, 0.4);
+}
+
+.modal-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  line-height: 1.7;
+}
+
+/* ---------------------------------------------------------
+11. フッター ＆ バック・トゥ・トップボタン
+--------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-navy);
+  color: var(--color-gold);
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(201, 168, 106, 0.3);
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  background: var(--color-navy);
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 400;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  transform: translateY(-4px);
+}
+
+/* ---------------------------------------------------------
+12. レスポンシブ対応
+--------------------------------------------------------- */
+/* 見出し・ボタンの不自然な改行や文字あふれを防止 */
+.section-title {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.upcoming-action-text {
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    /* --- ① 見出しサイズのスマホ最適化 --- */
+    .section-title {
+        font-size: 1.4rem;
+        max-width: 100%;
+        line-height: 1.4;
+    }
+
+    /* --- ② ヘッダーのはみ出し・改行防止 --- */
+    .site-header {
+        flex-direction: column;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    .header-logo {
+        font-size: 1.3rem;
+    }
+
+    .nav-menu {
+        gap: 12px 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-menu a {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    /* --- ③ ヒーローエリア・全体余白の調整 --- */
+    .hero-section {
+        padding-top: 140px;
+    }
+
+    .hero-frame {
+        padding: 30px 18px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-container {
+        padding: 60px 15px;
+    }
+
+    .about-card {
+        padding: 40px 20px;
+        font-size: 1.1rem;
+    }
+
+    /* --- ④ プロフィールセクションのはみ出し解消 --- */
+    .profile-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .profile-image-container {
+        width: 100%;          /* 固定幅500pxを解除 */
+        max-width: 320px;     /* スマホ画面に適したサイズへ縮小 */
+        margin: 0 auto;
+    }
+
+    .profile-image-container img {
+        height: auto;
+    }
+
+    .profile-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* --- ⑤ タイムラインのレスポンシブ＆縦線接続 --- */
+    .timeline::before {
+        left: 20px;
+        bottom: 40px; /* 縦線を Coming Soon 直上まで伸びるよう復元 */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-dot {
+        left: 12px !important;
+        right: auto !important;
+    }
+
+    .timeline-coming-soon {
+        text-align: left;
+        padding-left: 20px; /* 縦線の直下にぴったり配置 */
+        margin-top: 10px;
+    }
+
+    /* --- ⑥ スライダー（1枚表示＆カードアスペクト比固定） --- */
+    .upcoming-carousel-wrapper {
+        padding: 0 45px;
+    }
+
+    .upcoming-slide {
+        flex: 0 0 100%; /* スマホでは1枚ずつ画面いっぱいに表示 */
+        min-width: 100%;
+    }
+
+    .upcoming-banner-card {
+        height: 200px;
+    }
+}
