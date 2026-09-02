@@ -60,9 +60,9 @@ function initUpcomingCarousel() {
     let currentIndex = 0;
 
     // --- 1画面に表示する枚数の取得（PC:2枚 / スマホ:1枚） ---
-    function getCardsPerView() {
-        return window.innerWidth <= 768 ? 1 : 2;
-    }
+ function getCardsPerView() {
+    return window.innerWidth <= 900 ? 1 : 2;
+}
 
     // --- 最大スライドインデックスの計算 ---
     function getMaxIndex() {

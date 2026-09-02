@@ -603,7 +603,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   justify-content: space-between;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(12, 25, 44, 0.4) 0%, transparent 40%, rgba(12, 25, 44, 0.6) 100%);
+  background: none; /* ← ここを none に変更して影（グラデーション）を消去 */
 }
 
 .upcoming-badge {
@@ -689,6 +689,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 28px;
   border-radius: 10px;
 }
+
 
 /* ---------------------------------------------------------
 10. モーダルダイアログ (完全に非表示制御)
@@ -946,17 +947,19 @@ h1, h2, h3, h4, h5, h6 {
         margin-top: 10px;
     }
 
-    /* --- ⑥ スライダー（1枚表示＆カードアスペクト比固定） --- */
+/* --- ⑥ スライダー（1枚表示＆サムネイルサイズ・比率固定） --- */
     .upcoming-carousel-wrapper {
         padding: 0 45px;
     }
 
     .upcoming-slide {
-        flex: 0 0 100%; /* スマホでは1枚ずつ画面いっぱいに表示 */
+        flex: 0 0 100%;
         min-width: 100%;
     }
 
     .upcoming-banner-card {
-        height: 200px;
+        width: 100%;
+        height: auto;           /* 固定の高さを解除 */
+        aspect-ratio: 16 / 9;   /* どのスマホ画面幅でもサムネイルの縦横比を16:9に完全固定 */
     }
 }
