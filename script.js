@@ -40,13 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // =========================================================
-    // 現在展開されてるあれこれ（スライダー/カルーセル制御機能）
+    // FBKINGDOM NEWS（スライダー/カルーセル制御機能）
     // =========================================================
     initUpcomingCarousel();
 });
 
 /**
- * 現在展開されてるあれこれ：スライダー初期化＆制御関数
+ * FBKINGDOM NEWS：スライダー初期化＆制御関数
  */
 function initUpcomingCarousel() {
     const track = document.getElementById("upcomingTrack");
